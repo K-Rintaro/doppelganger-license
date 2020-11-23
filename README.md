@@ -1,4 +1,5 @@
 # doppelganger-license
+<img src="https://img.shields.io/npm/v/doppelganger-license?style=for-the-badge"/>
 License violation is over.
 
 ## What is this?
