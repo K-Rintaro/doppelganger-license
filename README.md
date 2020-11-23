@@ -34,7 +34,7 @@ $ npm install doppelganger-license
 
 **Second**, make <u>"memo.txt"</u> & <u>"dependencies.txt"</u> wherever you like.
 
-doppelganger-license writes that "ALL YOU NEED TO IS" to memo.txt and writing dependencies' licenses to dependencies.txt
+doppelganger-license writes that "ALL YOU NEED TO DO IS" to memo.txt and writing dependencies' licenses to dependencies.txt
 
 **Third**, enter this command.
 ```
