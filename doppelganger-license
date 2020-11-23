@@ -1,0 +1,197 @@
+#!/usr/bin/env node
+'use strict'
+
+const inquirer = require('inquirer');
+const fetch = require("node-fetch");
+const chalk = require('chalk');
+const { greenBright, redBright, green } = require("chalk");
+const fs = require("fs");
+const { mainModule } = require("process");
+
+inquirer
+    .prompt([
+        {
+            name: 'first',
+            message: 'Enter the path of package-lock.json',
+            default: '/user/example/example2/package-lock.json'
+        },
+        {
+            name: 'second',
+            message: 'Enter the path of memo.txt',
+            default: '/user/example/example2/memo.txt'
+        },
+        {
+            name: 'third',
+            message: 'Enter the path of dependencies.txt',
+            default: '/user/example/example2/dependencies.txt'
+        }
+    ])
+    .then(answers => {
+        var jsonpath = answers.first;
+        console.info('package-lock.json path:', jsonpath);
+        var memopath = answers.second;
+        console.info('memo.txt path:', memopath);
+        var depende = answers.third;
+        console.info('dependencies.txt path:', depende);
+
+        const jsonObject = JSON.parse(fs.readFileSync(jsonpath, 'utf8'));
+
+        fs.writeFileSync(memopath, "©︎2020 Rintaro Kobayashi - doppelganger-license\n\n‼CAUTION: 1.doppelganger-license cannot consider about contradiction of license. \n          2.Please choose license by yourself if you need to do dual-licensing.   \n\nALL YOU NEED TO IS: \n"+ "------------------------------------------------------------ \n⛓Add dependencies.txt in your software.\n", (err) => {
+          if(err) {
+            console.log(chalk.red("There are some problems in memo.text"))
+            console.log(err);
+          }
+        });
+        
+            const deps = JSON.stringify(jsonObject.dependencies);
+            const heyhey = JSON.parse(deps);
+            const unun = Object.keys(heyhey);
+            
+            const getVersion=data=>{
+                var ret=[];
+                Object.entries(data).forEach(x=>{
+                  if(x[0]=="version"){
+                    ret.push(x[1]);
+                  }else if(x[1] instanceof Object){
+                    ret=ret.concat(getVersion(x[1]));
+                  }
+                });
+                return ret;
+            };
+            
+            const hunhun = getVersion(heyhey)
+            
+            for(let i = 0; i < hunhun.length; i++) {
+                (async () => {
+                    var npmis = unun[i];
+                    var versionis = hunhun[i];
+                    var apiurl = "http://registry.npmjs.org/" + npmis + "/" + versionis;
+                    const response = await fetch(apiurl);
+                    const json = await response.json();
+        
+                    var licenses = json.license
+        
+                    if(licenses.includes("GPL")) {
+                        fs.appendFileSync(memopath, `☕License under the ${licenses} License! \n🌋Disclose source\n`, (err) => {
+                            if(err) {
+                              console.log(err);
+                            }})
+                    }
+        
+                    if(licenses.includes("LGPL")) {
+                        fs.appendFileSync(memopath, `☕License under the ${licenses} License! \n🌋Disclose source\n`, (err) => {
+                            if(err) {
+                              console.log(err);
+                            }})
+                    }
+        
+                    if(licenses.includes("AGPL")) {
+                        fs.appendFileSync(memopath, `☕License under the ${licenses} License! \n🌋Disclose source\n`, (err) => {
+                            if(err) {
+                              console.log(err);
+                            }})
+                    }
+        
+                    if(licenses.includes("EPL")) {
+                        fs.appendFileSync(memopath, `☕License under the ${licenses} License! \n🌋Disclose source\n`, (err) => {
+                            if(err) {
+                              console.log(err);
+                            }})
+                    }
+        
+                    if(licenses.includes("EUPL")) {
+                        fs.appendFileSync(memopath, `☕License under the ${licenses} License! \n🌋Disclose source\n`, (err) => {
+                            if(err) {
+                              console.log(err);
+                            }})
+                    }
+        
+                    if(licenses.includes("CPL")) {
+                        fs.appendFileSync(memopath, `☕License under the ${licenses} License! \n🌋Disclose source\n`, (err) => {
+                            if(err) {
+                              console.log(err);
+                            }})
+                    }
+        
+                    if(licenses.includes("MPL")) {
+                        fs.appendFileSync(memopath, `☕License under the ${licenses} License! \n🌋Disclose source\n`, (err) => {
+                            if(err) {
+                              console.log(err);
+                            }})
+                    }
+        
+                    console.log(chalk.yellow("doppelganger-license found:"));
+                    console.log(chalk.green("Package: ")+(npmis + "/@" + versionis));
+                    if (typeof json.license === "undefined"){
+                        console.log(chalk.green("License: ")+("Other"))
+                      }else{
+                        console.log(chalk.green("License: ")+(licenses))
+                    }
+        
+                    const response2 = await fetch('https://cdn.jsdelivr.net/npm/' + npmis + '@' + versionis + '/LICENSE');
+                    const body2 = await response2.text();
+                    if (!body2.includes("Couldn't find the requested file")){
+                        fs.appendFileSync(depende, npmis + "/@" + versionis + "\n\n" + body2 + "\n------------------------------------------------------------ \n", (err) => {
+                            if(err) {
+                              console.log(err);
+                            }})
+                    }
+                    if (body2.includes("Couldn't find the requested file")){
+                        const response3 = await fetch('https://cdn.jsdelivr.net/npm/' + npmis + '@' + versionis + '/license');
+                        const body3 = await response3.text();
+                        if (!body3.includes("Couldn't find the requested file")){
+                            fs.appendFileSync(depende, npmis + "/@" + versionis + "\n\n" + body3 + "\n------------------------------------------------------------ \n", (err) => {
+                                if(err) {
+                                  console.log(err);
+                                }})
+                        }
+                        if(body3.includes("Couldn't find the requested file")){
+                            const response4 = await fetch('https://cdn.jsdelivr.net/npm/' + npmis + '@' + versionis + '/LICENSE.md');
+                            const body4 = await response4.text();
+                            if(!body4.includes("Couldn't find the requested file")){
+                                fs.appendFileSync(depende, npmis + "/@" + versionis + "\n\n" + body4 + "\n------------------------------------------------------------ \n", (err) => {
+                                    if(err) {
+                                      console.log(err);
+                                    }})
+                            }
+                            if(body4.includes("Couldn't find the requested file")){
+                                const response5 = await fetch('https://cdn.jsdelivr.net/npm/' + npmis + '@' + versionis + '/license.md');
+                                const body5 = await response5.text();
+                                if(!body5.includes("Couldn't find the requested file")){
+                                    fs.appendFileSync(depende, npmis + "/@" + versionis + "\n\n" + body5 + "\n------------------------------------------------------------ \n", (err) => {
+                                        if(err) {
+                                          console.log(err);
+                                        }})
+                                }
+                                if(body5.includes("Couldn't find the requested file")){
+                                  const response6 = await fetch('https://cdn.jsdelivr.net/npm/' + npmis + '@' + versionis + '/license.txt');
+                                  const body6 = await response6.text();
+                                  if(!body6.includes("Couldn't find the requested file")){
+                                    fs.appendFileSync(depende, npmis + "/@" + versionis + "\n\n" + body6 + "\n------------------------------------------------------------ \n", (err) => {
+                                        if(err) {
+                                          console.log(err);
+                                        }})
+                                  }
+                                  if(body6.includes("Couldn't find the requested file")) {
+                                    const response7 = await fetch('https://cdn.jsdelivr.net/npm/' + npmis + '@' + versionis + '/LICENSE.txt');
+                                    const body7 = await response7.text();
+                                    if(!body7.includes("Couldn't find the requested file")){
+                                      fs.appendFileSync(depende, npmis + "/@" + versionis + "\n\n" + body7 + "\n------------------------------------------------------------ \n", (err) => {
+                                          if(err) {
+                                            console.log(err);
+                                          }})
+                                    }
+                                    if(body7.includes("Couldn't find the requested file")){
+                                      fs.appendFileSync(memopath, "\n🔨doppelganger-license could not find license file. Please check the license of the package by yourself. \n Package:" + npmis + "\n Version:" + versionis + "\n License:" + licenses, (err) => {
+                                        if(err) {
+                                          console.log(err);
+                                        }})
+                                    }
+                                  }
+                                }
+                            }
+                        }
+                    }
+                })();
+            }
+    });

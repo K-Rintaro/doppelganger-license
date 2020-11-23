@@ -1,0 +1,34 @@
+{
+  "name": "doppelganger-license",
+  "author": "Rintaro Kobayashi",
+  "description": "License violation is over.",
+  "license": "MIT",
+  "version": "1.0.0",
+  "main": "doppelgange-license",
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "node-fetch": "^2.6.1",
+    "prompts": "^2.4.0",
+    "yarn": "^1.22.10"
+  },
+  "devDependencies": {
+    "chalk": "^4.1.0"
+  },
+  "bin": {
+    "doppelganger-license": "doppelganger-license"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/K-Rintaro/doppelganger-license.git"
+  },
+  "keywords": [
+    "license"
+  ],
+  "bugs": {
+    "url": "https://github.com/K-Rintaro/doppelganger-license/issues"
+  },
+  "homepage": "https://github.com/K-Rintaro/doppelganger-license#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
