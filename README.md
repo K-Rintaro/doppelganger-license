@@ -14,7 +14,7 @@ For example,
 ‼CAUTION: 1.doppelganger-license cannot consider about contradiction of license. 
           2.Please choose license by yourself if you need to do dual-licensing.   
 
-ALL YOU NEED TO IS: 
+ALL YOU NEED TO DO IS: 
 ------------------------------------------------------------ 
 ⛓Add dependencies.txt in your software.
 ```
