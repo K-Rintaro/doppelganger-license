@@ -1,5 +1,5 @@
 # doppelganger-license
-<img src="https://img.shields.io/npm/v/doppelganger-license?style=for-the-badge"/>   <img src="https://img.shields.io/npm/dt/doppelganger-license?style=for-the-badge" />
+<img src="https://img.shields.io/npm/v/doppelganger-license?style=for-the-badge"/>   <img src="https://img.shields.io/npm/dt/doppelganger-license?style=for-the-badge" /> <img src="https://img.shields.io/npm/l/doppelganger-license?color=FFC0CB&style=for-the-badge" />
 
 License violation is over.
 
