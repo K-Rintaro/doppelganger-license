@@ -27,8 +27,5 @@
   "bugs": {
     "url": "https://github.com/K-Rintaro/doppelganger-license/issues"
   },
-  "homepage": "https://github.com/K-Rintaro/doppelganger-license#readme",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  "homepage": "https://github.com/K-Rintaro/doppelganger-license#readme"
 }
